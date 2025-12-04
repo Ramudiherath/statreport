@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Vue.js App</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+
+        <div class="input-group">
+            <input 
+                v-model="newItem" 
+                type="text" 
+                placeholder="Add a new item..."
+                @keyup.enter="addItem"
+            >
+            <button @click="addItem">Add Item</button>
+        </div>
+
+        <div class="counter">
+            Total Items: {{ items.length }}
+        </div>
+
+        <div class="items-list">
+            <h2>Items:</h2>
+            <div v-if="items.length === 0" class="empty-message">
+                No items yet. Add one to get started!
+            </div>
+            <div v-for="(item, index) in items" :key="index" class="item">
+                <span>{{ item }}</span>
+                <button class="delete-btn" @click="removeItem(index)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="src/js/app.js"></script>
+</body>
+</html>
